@@ -1,81 +1,43 @@
-
+// TODO: Create a function that returns the license section of README
+// If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  if (license === 'None') {
-    return '';
+  if (license !== "none"){
+    return `![License](https://img.shields.io/badge/license-${license}-yellow.svg)`;
   }
-  return `![GitHub license](https://img.shields.io/badge/license-${license}-blue.svg)`;
 }
 
-function renderLicenseLink(license) {
-  if (license !== 'None') {
-    return '';
-  }
-  return `\n* [License](#license)\n`;
-}
-
-function renderLicenseSection(license) {
-  if (license !== 'None') {
-    return `## License
-
-This project is licensed under the ${license} license.`;
-  }
-  return '';
-}
-
+// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
-${renderLicenseBadge(data.license)}
-
-## Description
-
-${data.description}
-
-## Table of Contents 
-
-* [Installation](#installation)
-
-* [Usage](#usage)
-${renderLicenseLink(data.license)}
-* [Contributing](#contributing)
-
-* [Tests](#tests)
-
-* [Questions](#questions)
-
+  return `
+# ${data.name}
+## Project Description
+${data.descrip}
+## Table of Contents
+  1. Licenses
+  2. Required Technologies
+  3. Installation
+  4. Tests
+  5. Usage
+  6. Contributions
+  7. Questions
+## Licenses
+  ${data.license}  
+  ${renderLicenseBadge(data.license)}
+## Required Technologies
+  ${data.tech}
 ## Installation
-
-To install necessary dependencies, run the following command:
-
-\`\`\`
-${data.installation}
-\`\`\`
-
-## Usage
-
-${data.usage}
-
-${renderLicenseSection(data.license)}
-  
-## Contributing
-
-${data.contributing}
-
+Commands to Run to Install Dependencies:
+>${data.depend}
 ## Tests
-
-To run tests, run the following command:
-
-\`\`\`
-${data.test}
-\`\`\`
-
+Commands to run to run appropriate tests:
+>${data.tests}
+## Usage
+${data.usage}
+## Contributions
+${data.contribution}
 ## Questions
-
-If you have any questions about the repo, open an issue or contact me directly at ${
-    data.email
-  }. You can find more of my work at [${data.github}](https://github.com/${
-    data.github
-  }/).
-
+For questions regarding the usage of this repo, github account name is:
+${data.github}
 `;
 }
 
